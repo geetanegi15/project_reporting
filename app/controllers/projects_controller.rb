@@ -47,5 +47,5 @@ class ProjectsController < ApplicationController
             return render json: { message: 'project not found' }, status: :not_found
           end
           render json: @project
-        end
+    end
 end
