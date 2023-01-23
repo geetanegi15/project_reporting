@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_20_150821) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_23_092222) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_150821) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "managers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "project_members", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -69,7 +76,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_150821) do
     t.integer "status"
     t.integer "phase"
     t.integer "category"
+    t.bigint "manager_id"
+    t.index ["manager_id"], name: "index_projects_on_manager_id"
+  end
+
+  create_table "stakeholders", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "project_members", "projects"
+  add_foreign_key "projects", "managers"
 end

@@ -24,6 +24,9 @@ index do
       column :status
       column :phase
       column :category
+      column :manager_name do |m|
+        m.manager
+     end
     actions 
 end
 end

@@ -15,4 +15,27 @@ ActiveAdmin.register ProjectMember do
   #   permitted
   # end
   
+index do
+  selectable_column
+  id_column
+  column :name
+  column :email
+  column :project_id do |p|
+    p.project.project_name
+  end
+end
+
+form do |f|
+  inputs 'project_members'do 
+    f.input :project do |p|
+      p.project.project_name
+    end
+    f.input :name
+    f.input :email
+    f.input :role
+   
+  end
+  actions
+end
+
 end

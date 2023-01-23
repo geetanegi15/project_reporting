@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :client_informations
   resources :project_members
+  resources :managers
+  resources :stakeholders
+  resources :team_members
 end
